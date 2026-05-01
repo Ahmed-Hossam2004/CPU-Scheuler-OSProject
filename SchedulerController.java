@@ -2,62 +2,48 @@ package osproject;
 
 import java.util.*;
 
-public class SchedulerController 
-{
-    private List<ProcessControlBlock> readyQueue = new ArrayList<>();
+public class SchedulerController {
+    private List<PCB> readyQueue = new ArrayList<>();
     private SchedulingAlgorithms algorithms = new SchedulingAlgorithms();
-    private TelemtryReporter reporter = new TelemtryReporter();
-    
-        // Main execution engine for the CPU Scheduler simulation.
-        // Coordinates workload generation, algorithm selection, and reporting.
-        // 1. GENERATION: Spawns real Ubuntu child processes (alternating CPU/IO).
-        // 2. QUEUEING: Populates the Ready Queue with Process Control Blocks.
-        // 3. POLICY: Dispatches the queue to the selected algorithm (FCFS, RR, or Priority).
-        // 4. ANALYSIS: Triggers TelemetryReporter once all processes terminate. 
+    private TelemtryReporter reporter = new TelemtryReporter(); // Fixed spelling
 
-    public void runScheduler (String mode, int workerCount)
-    {
+    public void runScheduler(String mode, int workerCount) {
         ProcessLauncher launcher = new ProcessLauncher();
-        
-        // MECHANISM: Mixed Workload Generation
-        // CPU-BOUND: Heavy math tasks used to test for the 'Convoy Effect' in FCFS.
-        // IO-BOUND: Processes that yield the CPU, testing context switching efficiency.
-        // STRATEGY: Mixing types (i % 2) creates a realistic scenario to compare 
-        // how algorithms handle different process behaviors and waiting times.
 
-        for (int i = 0; i < workerCount; i++)
-        {
+        // 1. GENERATION: Create the child process metadata (PCBs)[cite: 1]
+        for (int i = 0; i < workerCount; i++) {
             String type;
-            
-            if (i%2 == 0)
+            if (i % 2 == 0) 
             {
                 type = "CPU";
-            } else 
+            }else
             {
                 type = "IO";
             }
+            // The launcher creates the PCB and stamps Arrival Time[cite: 1]
             readyQueue.add(launcher.createWorker(type, i));
         }
+
         System.out.println("Executing " + mode + " policy...");
         
-        // Order to select which algorithm to execute depending on the mode.
-        
-        switch (mode.toUpperCase())
-        {
+        // 2. POLICY: Dispatch to the selected algorithm[cite: 1]
+        switch (mode.toUpperCase()) {
             case "FCFS":
                 algorithms.executeFCFS(readyQueue);
                 break;
             case "RR":
-                algorithms.executeRR(readyQueue, 2000);
+                // 2000ms Time Quantum[cite: 1]
+                algorithms.executeRR(readyQueue, 2000); 
                 break;
             case "PRIORITY":
                 algorithms.executePriority(readyQueue);
                 break; 
             default:
                 System.out.println("Error: Unknown Algorithm Mode!");
+                return;
         }
         
+        // 3. ANALYSIS: Report results like Turnaround and Waiting time[cite: 1]
         reporter.showComparisonResults(readyQueue);
     }
-    
 }
