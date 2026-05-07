@@ -104,30 +104,65 @@ public class SchedulingAlgorithms {
       @param queue   The list of processes to schedule.
       @param quantum The maximum time slice for each process burst.
      */
-    public void executeRR(List<PCB> queue, int quantum) {
-        // Initial sort by arrival to populate the circular queue correctly
-        queue.sort(Comparator.comparingInt(PCB::getArrivalCycle));
-        Queue<PCB> readyQueue = new LinkedList<>(queue);
+    
 
-        while (!readyQueue.isEmpty()) {
-            PCB p = readyQueue.poll();
-            
-            // Calculate burst length (either the quantum or the remaining time)
-            int timeToRun = Math.min(p.getRemainingTime(), quantum); 
-            
-            manageBurst(p, timeToRun);
-            p.setRemainingTime(p.getRemainingTime() - timeToRun);
+   
+    public void executeRR(List<PCB> allProcesses, int quantum) {
+    // 1. Sort the master list by arrival time
+    allProcesses.sort(Comparator.comparingInt(PCB::getArrivalCycle));
+    
+    // 2. The active queue of processes that have "arrived"
+    Queue<PCB> readyQueue = new LinkedList<>();
+    
+    int n = allProcesses.size();
+    int processIndex = 0;
+    int completedCount = 0;
 
-            if (p.getRemainingTime() > 0) {
-                readyQueue.add(p); // Re-queue process if it needs more CPU time
-            } else {
-                p.setEndCycle(logicalTime);
-                p.terminate();
+    // Reset logical time if necessary, or start from 0
+    logicalTime = 0; 
+
+    while (completedCount < n) {
+        // STEP A: Fill the queue with processes that arrived AT or BEFORE the current time
+        while (processIndex < n && allProcesses.get(processIndex).getArrivalCycle() <= logicalTime) {
+            readyQueue.add(allProcesses.get(processIndex));
+            processIndex++;
+        }
+
+        // STEP B: Handle CPU Idle Time
+        // If no one is ready, but we aren't done yet, jump to the arrival of the next process
+        if (readyQueue.isEmpty()) {
+            if (processIndex < n) {
+                logicalTime = allProcesses.get(processIndex).getArrivalCycle();
+                // Re-run this loop iteration to add the process that just "arrived"
+                continue; 
             }
         }
-    }
 
-    /*
+        // STEP C: Execute the head of the queue
+        PCB currentP = readyQueue.poll();
+        int burst = Math.min(currentP.getRemainingTime(), quantum);
+        
+        // This method increases 'logicalTime' and manages the Linux SIGCONT/SIGSTOP
+        manageBurst(currentP, burst);
+        currentP.setRemainingTime(currentP.getRemainingTime() - burst);
+
+        // STEP D: Check for NEW arrivals that happened WHILE 'currentP' was running
+        while (processIndex < n && allProcesses.get(processIndex).getArrivalCycle() <= logicalTime) {
+            readyQueue.add(allProcesses.get(processIndex));
+            processIndex++;
+        }
+
+        // STEP E: Re-queue currentP if not finished, otherwise terminate
+        if (currentP.getRemainingTime() > 0) {
+            readyQueue.add(currentP);
+        } else {
+            currentP.setEndCycle(logicalTime);
+            currentP.terminate();
+            completedCount++;
+        }
+    }
+}
+     /*
       Executes Non-preemptive Priority scheduling.
       Processes are executed based on their priority value (lower value = higher priority).
       @param queue The list of processes to schedule.
