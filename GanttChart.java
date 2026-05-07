@@ -10,3 +10,6 @@ public class GanttChart {
         this.end = end;
     }
 }
+
+//GanttChart
+
