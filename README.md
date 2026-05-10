@@ -1,10 +1,6 @@
-[Uploading README_2.md…]()<div align="center">
+[README_3.md](https://github.com/user-attachments/files/27566280/README_3.md)<div align="center">
 
-```
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=160&section=header&text=CPU%20Scheduler%20Simulator&fontSize=36&fontColor=ffffff&fontAlignY=40&desc=MSA%20University%20%C2%B7%20CSE264%20Operating%20Systems%20%C2%B7%20Spring%202026&descAlignY=62&descSize=14&animation=fadeIn"/>
-</div>
-```
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=160&section=header&text=CPU%20Scheduler%20Simulator&fontSize=36&fontColor=ffffff&fontAlignY=40&desc=MSA%20University%20%C2%B7%20CSE264%20Operating%20Systems%20%C2%B7%20Spring%202026&descAlignY=62&descSize=14&animation=fadeIn"/>
 
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
 <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/>
@@ -637,11 +633,6 @@ java -cp out osproject.SchedulerGUI
 
 <div align="center">
 
-```
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CSE264 Operating Systems  ·  MSA University  ·  Spring 2026
-              Made with  ☕ Java  and  🐧 Linux signals
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=100&section=footer&text=CSE264%20Operating%20Systems%20%C2%B7%20MSA%20University%20%C2%B7%20Spring%202026&fontSize=13&fontColor=ffffff&fontAlignY=65"/>
 
 </div>
