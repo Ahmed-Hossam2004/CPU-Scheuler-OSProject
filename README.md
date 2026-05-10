@@ -1,19 +1,24 @@
-[README_1.md](https://github.com/user-attachments/files/27551292/README_1.md)
-<div align="center">
+[Uploading README_2.md…]()<div align="center">
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║        ██████╗██████╗ ██╗   ██╗    ███████╗ ██████╗██╗  ██╗      ║
-║       ██╔════╝██╔══██╗██║   ██║    ██╔════╝██╔════╝██║  ██║      ║
-║       ██║     ██████╔╝██║   ██║    ███████╗██║     ███████║      ║
-║       ██║     ██╔═══╝ ██║   ██║    ╚════██║██║     ██╔══██║      ║
-║       ╚██████╗██║     ╚██████╔╝    ███████║╚██████╗██║  ██║      ║
-║        ╚═════╝╚═╝      ╚═════╝     ╚══════╝ ╚═════╝╚═╝  ╚═╝      ║
-║                                                                  ║
-║              S C H E D U L E R   S I M U L A T O R               ║
-║          MSA University  ·  CSE264 Operating Systems             ║
-╚══════════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║    ██████╗██████╗ ██╗   ██╗    ███████╗ ██████╗██╗  ██╗███████╗██████╗     ║
+║   ██╔════╝██╔══██╗██║   ██║    ██╔════╝██╔════╝██║  ██║██╔════╝██╔══██╗    ║
+║   ██║     ██████╔╝██║   ██║    ███████╗██║     ███████║█████╗  ██║  ██║    ║
+║   ██║     ██╔═══╝ ██║   ██║    ╚════██║██║     ██╔══██║██╔══╝  ██║  ██║    ║
+║   ╚██████╗██║     ╚██████╔╝    ███████║╚██████╗██║  ██║███████╗██████╔╝    ║
+║    ╚═════╝╚═╝      ╚═════╝     ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═════╝    ║
+║                                                                              ║
+║   ███████╗██╗███╗   ███╗██╗   ██╗██╗      █████╗ ████████╗ ██████╗ ██████╗ ║
+║   ██╔════╝██║████╗ ████║██║   ██║██║     ██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗║
+║   ███████╗██║██╔████╔██║██║   ██║██║     ███████║   ██║   ██║   ██║██████╔╝║
+║   ╚════██║██║██║╚██╔╝██║██║   ██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗║
+║   ███████║██║██║ ╚═╝ ██║╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝██║  ██║║
+║   ╚══════╝╚═╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝║
+║                                                                              ║
+║                  MSA University  ·  CSE264 Operating Systems                ║
+╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
@@ -60,18 +65,18 @@ It was developed for the **CSE264 Operating Systems** course at **MSA University
 
 ### Why This Project Stands Out
 
-```
-  ┌──────────────────────────────────┬────────────────────────────────────────┐
-  │     Traditional Simulators       │         This Simulator                 │
-  ├──────────────────────────────────┼────────────────────────────────────────┤
-  │  Calculate numbers theoretically │  Spawns REAL OS processes              │
-  │  No kernel involvement           │  Uses SIGSTOP / SIGCONT kernel signals │
-  │  Static output                   │  Live Gantt Chart (real-time updates)  │
-  │  Fixed single algorithm          │  Switch FCFS / RR / Priority on the fly│
-  │  No process differentiation      │  CPU-bound vs I/O-bound worker types   │
-  │  No idle time handling           │  Logical clock jumps over CPU gaps     │
-  └──────────────────────────────────┴────────────────────────────────────────┘
-```
+<div align="center">
+
+| Traditional Simulators | This Simulator |
+|:---|:---|
+| ❌ Calculate numbers theoretically | ✅ Spawns **real** OS processes |
+| ❌ No kernel involvement | ✅ Uses `SIGSTOP` / `SIGCONT` kernel signals |
+| ❌ Static output | ✅ Live Gantt Chart (real-time updates) |
+| ❌ Fixed single algorithm | ✅ Switch FCFS / RR / Priority at runtime |
+| ❌ No process differentiation | ✅ CPU-bound vs I/O-bound worker types |
+| ❌ No idle time handling | ✅ Logical clock jumps over CPU gaps |
+
+</div>
 
 ---
 
@@ -108,7 +113,7 @@ The project follows a clean **Model-View-Controller (MVC)** architecture:
   ╚═══════════╝    ╚═══════════════════╤══════════════════════╝
                                        │  spawn + signal
                    ╔═══════════════════▼══════════════════════╗
-                   ║           UBUNTU LINUX KERNEL            ║
+                   ║           UBUNTU LINUX KERNEL             ║
                    ║   Real PIDs  ·  SIGSTOP  ·  SIGCONT      ║
                    ╚══════════════════════════════════════════╝
 ```
@@ -150,20 +155,22 @@ Every worker process transitions through these states, controlled by Linux signa
 
 ## ✨ Features
 
-```
-  ┌─────────────────────────────────────────────────────────────────┐
-  │  🖥️  Java Swing GUI      │  Dark-themed window, live result table│
-  │  ⚙️  3 Algorithms        │  FCFS · Round Robin · Priority        │
-  │  🔁  Dynamic Quantum     │  Configurable 1–10 cycles (for RR)   │
-  │  📊  Live Gantt Chart    │  Custom paintComponent, pixel-scaled  │
-  │  🧬  Real OS Processes   │  Each task = actual child JVM on Linux│
-  │  📡  Kernel Signals      │  SIGSTOP pauses · SIGCONT resumes     │
-  │  📋  Telemetry Report    │  TAT · WT · averages printed to console│
-  │  💡  CPU Idle Handling   │  logicalTime jumps over empty gaps    │
-  │  🔄  Arrival-Aware RR    │  Processes admitted mid-simulation    │
-  │  🧹  Auto Cleanup        │  All worker processes terminated post-run│
-  └─────────────────────────────────────────────────────────────────┘
-```
+<div align="center">
+
+| Icon | Feature | Description |
+|:---:|:---|:---|
+| 🖥️ | **Java Swing GUI** | Dark-themed window with live result table |
+| ⚙️ | **3 Algorithms** | FCFS · Round Robin · Priority — switchable at runtime |
+| 🔁 | **Dynamic Quantum** | Configurable 1–10 cycles (for RR) |
+| 📊 | **Live Gantt Chart** | Custom `paintComponent`, pixel-scaled to logical cycles |
+| 🧬 | **Real OS Processes** | Each task = actual child JVM running on Linux |
+| 📡 | **Kernel Signals** | `SIGSTOP` pauses · `SIGCONT` resumes |
+| 📋 | **Telemetry Report** | TAT · WT · averages printed to console |
+| 💡 | **CPU Idle Handling** | `logicalTime` jumps over empty gaps |
+| 🔄 | **Arrival-Aware RR** | Processes admitted mid-simulation |
+| 🧹 | **Auto Cleanup** | All worker processes terminated after run |
+
+</div>
 
 ---
 
@@ -330,18 +337,17 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Results:**
-```
-  ╔══════╦═══════════╦══════════╦══════╦═══════════════════════════════╗
-  ║ PID  ║  Arrival  ║  Finish  ║  TAT ║  WT                           ║
-  ╠══════╬═══════════╬══════════╬══════╬═══════════════════════════════╣
-  ║  P1  ║     0     ║    12    ║  12  ║   0  cycles                   ║
-  ║  P2  ║     1     ║    14    ║  13  ║  11  cycles  ⚠️ waiting!      ║
-  ║  P3  ║     2     ║    16    ║  14  ║  12  cycles  ⚠️ waiting!      ║
-  ╠══════╩═══════════╩══════════╩══════╬═══════════════════════════════╣
-  ║                                    ║  Avg TAT: 13.00               ║
-  ║                                    ║  Avg WT:   7.67  ⚠️ HIGH      ║
-  ╚════════════════════════════════════╩═══════════════════════════════╝
-```
+
+<div align="center">
+
+| PID | Arrival | Finish | TAT | Waiting Time | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| P1 | 0 | 12 | 12 | 0 cycles | ✅ |
+| P2 | 1 | 14 | 13 | 11 cycles | ⚠️ |
+| P3 | 2 | 16 | 14 | 12 cycles | ⚠️ |
+| | | **Average** | **13.00** | **7.67** | ⚠️ HIGH |
+
+</div>
 
 > 💡 **Insight:** P1's 12-cycle burst creates a **convoy** — P2 and P3 are tiny (2 cycles each) but must wait over 10 cycles. This is FCFS's biggest weakness.
 
@@ -369,17 +375,16 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Results:**
-```
-  ╔══════╦═══════════╦══════════╦══════╦═══════════════════════════════╗
-  ║ PID  ║  Arrival  ║  Finish  ║  TAT ║  WT                           ║
-  ╠══════╬═══════════╬══════════╬══════╬═══════════════════════════════╣
-  ║  P1  ║     0     ║    13    ║  13  ║   6  cycles                   ║
-  ║  P2  ║     0     ║    14    ║  14  ║   7  cycles                   ║
-  ╠══════╩═══════════╩══════════╩══════╬═══════════════════════════════╣
-  ║                                    ║  Avg TAT: 13.50               ║
-  ║                                    ║  Avg WT:   6.50               ║
-  ╚════════════════════════════════════╩═══════════════════════════════╝
-```
+
+<div align="center">
+
+| PID | Arrival | Finish | TAT | Waiting Time | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| P1 | 0 | 13 | 13 | 6 cycles | ✅ |
+| P2 | 0 | 14 | 14 | 7 cycles | ✅ |
+| | | **Average** | **13.50** | **6.50** | |
+
+</div>
 
 > 💡 **Insight:** Both processes share the CPU fairly — no starvation. Each SIGCONT/SIGSTOP pair confirms preemption works correctly at the kernel level.
 
@@ -410,18 +415,17 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Results:**
-```
-  ╔══════╦═══════════╦══════════╦══════╦═══════════════════════════════╗
-  ║ PID  ║  Arrival  ║  Finish  ║  TAT ║  WT                           ║
-  ╠══════╬═══════════╬══════════╬══════╬═══════════════════════════════╣
-  ║  P2  ║     2     ║     6    ║   4  ║   0  cycles  ✅               ║
-  ║  P3  ║     2     ║     9    ║   7  ║   4  cycles  ✅               ║
-  ║  P1  ║     0     ║    15    ║  15  ║   9  cycles  ⚠️ starved       ║
-  ╠══════╩═══════════╩══════════╩══════╬═══════════════════════════════╣
-  ║                                    ║  Avg TAT:  8.67               ║
-  ║                                    ║  Avg WT:   4.33               ║
-  ╚════════════════════════════════════╩═══════════════════════════════╝
-```
+
+<div align="center">
+
+| PID | Arrival | Finish | TAT | Waiting Time | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| P2 | 2 | 6 | 4 | 0 cycles | ✅ |
+| P3 | 2 | 9 | 7 | 4 cycles | ✅ |
+| P1 | 0 | 15 | 15 | 9 cycles | ⚠️ starved |
+| | | **Average** | **8.67** | **4.33** | |
+
+</div>
 
 > 💡 **Insight:** P1 arrived first (cycle 0) but executes **last** because its priority is the lowest. The comparator correctly overrides arrival order with importance level.
 
@@ -442,7 +446,7 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
   ╔════════╦══════════════════════════════════════╦══════════════╗
   ║   P1   ║               IDLE                   ║      P2      ║
-  ║        ║          (7 cycles gap)               ║             ║
+  ║        ║          (7 cycles gap)               ║              ║
   ╚════════╩══════════════════════════════════════╩══════════════╝
   0        3                                      10             14
            ↑
@@ -451,17 +455,16 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Results:**
-```
-  ╔══════╦═══════════╦══════════╦══════╦═══════════════════════════════╗
-  ║ PID  ║  Arrival  ║  Finish  ║  TAT ║  WT                           ║
-  ╠══════╬═══════════╬══════════╬══════╬═══════════════════════════════╣
-  ║  P1  ║     0     ║     3    ║   3  ║   0  cycles  ✅               ║
-  ║  P2  ║    10     ║    14    ║   4  ║   0  cycles  ✅               ║
-  ╠══════╩═══════════╩══════════╩══════╬═══════════════════════════════╣
-  ║                                    ║  Avg TAT:  3.50               ║
-  ║                                    ║  Avg WT:   0.00  ✅ PERFECT   ║
-  ╚════════════════════════════════════╩═══════════════════════════════╝
-```
+
+<div align="center">
+
+| PID | Arrival | Finish | TAT | Waiting Time | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| P1 | 0 | 3 | 3 | 0 cycles | ✅ |
+| P2 | 10 | 14 | 4 | 0 cycles | ✅ |
+| | | **Average** | **3.50** | **0.00** | ✅ PERFECT |
+
+</div>
 
 > 💡 **Insight:** `manageBurst()` detects `logicalTime < arrivalCycle` and jumps the clock to cycle 10. The 7-cycle idle gap is handled cleanly — no crashes, no phantom execution.
 
@@ -490,18 +493,17 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Results:**
-```
-  ╔══════╦═══════════╦══════════╦══════╦═══════════════════════════════╗
-  ║ PID  ║  Arrival  ║  Finish  ║  TAT ║  WT                           ║
-  ╠══════╬═══════════╬══════════╬══════╬═══════════════════════════════╣
-  ║  P1  ║     0     ║    12    ║  12  ║   6  cycles                   ║
-  ║  P2  ║     0     ║    15    ║  15  ║   9  cycles                   ║
-  ║  P3  ║     0     ║    18    ║  18  ║  12  cycles                   ║
-  ╠══════╩═══════════╩══════════╩══════╬═══════════════════════════════╣
-  ║                                    ║  Avg TAT: 15.00               ║
-  ║                                    ║  Avg WT:   9.00               ║
-  ╚════════════════════════════════════╩═══════════════════════════════╝
-```
+
+<div align="center">
+
+| PID | Arrival | Finish | TAT | Waiting Time | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| P1 | 0 | 12 | 12 | 6 cycles | ✅ |
+| P2 | 0 | 15 | 15 | 9 cycles | ✅ |
+| P3 | 0 | 18 | 18 | 12 cycles | ✅ |
+| | | **Average** | **15.00** | **9.00** | |
+
+</div>
 
 > 💡 **Insight:** Burst = 2 × quantum → each process completes in exactly 2 clean turns. Zero wasted cycles, zero partial slices. Queue transitions are perfectly efficient.
 
@@ -537,14 +539,15 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
 
 **Head-to-Head Comparison:**
-```
-  ╔═══════════╦══════════╦══════════╦══════════╦═══════════╦═══════════╗
-  ║ Algorithm ║ P1 (TAT) ║ P2 (TAT) ║ P3 (TAT) ║  Avg TAT  ║  Avg WT   ║
-  ╠═══════════╬══════════╬══════════╬══════════╬═══════════╬═══════════╣
-  ║   FCFS    ║  8 cyc   ║ 12 cyc   ║ 16 cyc   ║   12.00   ║  4.00  ✅ ║
-  ║  RR (Q=4) ║ 16 cyc   ║ 16 cyc   ║ 16 cyc   ║   16.00   ║  8.00  ❌ ║
-  ╚═══════════╩══════════╩══════════╩══════════╩═══════════╩═══════════╝
-```
+
+<div align="center">
+
+| Algorithm | P1 TAT | P2 TAT | P3 TAT | Avg TAT | Avg WT | |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| FCFS | 8 cyc | 12 cyc | 16 cyc | **12.00** | **4.00** | ✅ |
+| RR (Q=4) | 16 cyc | 16 cyc | 16 cyc | **16.00** | **8.00** | ❌ |
+
+</div>
 
 > 💡 **Insight:** For perfectly staggered equal-burst processes, **FCFS outperforms RR**. RR's context-switching overhead adds up when no process actually benefits from preemption — they all arrive right on time.
 
@@ -612,30 +615,24 @@ java -cp out osproject.SchedulerGUI
 
 <div align="center">
 
-```
-  ╔════════════════════════════════════════════════════════════════════════╗
-  ║                            PROJECT  TEAM                               ║
-  ╠══════════════════════════╦══════════════╦══════════════════════════════╣
-  ║  Name                    ║  Student ID  ║  Contributions               ║
-  ╠══════════════════════════╬══════════════╬══════════════════════════════╣
-  ║  Ahmed Hossam Mohamed    ║   248141     ║  SchedulerGUI.java           ║
-  ║  Ezz-Eldin Mohamed       ║              ║  GanttChart.java             ║
-  ║                          ║              ║  GanttChartPanel.java        ║
-  ║                          ║              ║  SchedulerController.java    ║
-  ║                          ║              ║  ProcessLauncher.java        ║
-  ╠══════════════════════════╬══════════════╬══════════════════════════════╣
-  ║  Ahmed Amr Ahmed         ║   241659     ║  SchedulingAlgorithms.java   ║
-  ║  Ismail Jabr             ║              ║  WorkerProcess.java          ║
-  ╠══════════════════════════╬══════════════╬══════════════════════════════╣
-  ║  Mohamed Amr Mohamed     ║   243835     ║  PCB.java                    ║
-  ║  Salama Mohamed Eissa    ║              ║  TelemtryReporter.java       ║
-  ╚══════════════════════════╩══════════════╩══════════════════════════════╝
+<div align="center">
 
-  Teaching Assistant  :  Eng. Hussien Mostafa
-  Course Instructor   :  Assoc. Professor Mokhtar A. A. Mohamed
-  Institution         :  MSA University — Faculty of Engineering · CSE Dept
-  Semester            :  Spring 2026
-```
+| 👨‍💻 | Name | Student ID | Contributions |
+|:---:|:---|:---:|:---|
+| | **Ahmed Hossam Mohamed Ezz-Eldin Mohamed** | `248141` | `SchedulerGUI.java` · `GanttChart.java` · `GanttChartPanel.java` · `SchedulerController.java` · `ProcessLauncher.java` |
+| | **Ahmed Amr Ahmed Ismail Jabr** | `241659` | `SchedulingAlgorithms.java` · `WorkerProcess.java` |
+| | **Mohamed Amr Mohamed Salama Mohamed Eissa** | `243835` | `PCB.java` · `TelemtryReporter.java` |
+
+<br/>
+
+| Role | |
+|:---|:---|
+| 🎓 Teaching Assistant | Eng. Hussien Mostafa |
+| 🏫 Course Instructor | Assoc. Professor Mokhtar A. A. Mohamed |
+| 🏛️ Institution | MSA University — Faculty of Engineering, CSE Department |
+| 📅 Semester | Spring 2026 |
+
+</div>
 
 </div>
 
