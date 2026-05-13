@@ -67,20 +67,20 @@ The project follows a clean **Model-View-Controller (MVC)** architecture:
 
 ```
   ╔══════════════════════════════════════════════════════════════╗
-  ║                        VIEW  LAYER                          ║
-  ║                                                             ║
-  ║    ┌─────────────────────┐     ┌───────────────────────┐   ║
-  ║    │   SchedulerGUI.java │────▶│  GanttChartPanel.java │   ║
-  ║    │  (Swing Interface)  │     │  (Custom Renderer)    │   ║
-  ║    └──────────┬──────────┘     └───────────────────────┘   ║
-  ╚═══════════════╪════════════════════════════════════════════╝
+  ║                        VIEW  LAYER                           ║
+  ║                                                              ║
+  ║    ┌─────────────────────┐     ┌───────────────────────┐     ║
+  ║    │   SchedulerGUI.java │────▶│  GanttChartPanel.java │    ║
+  ║    │  (Swing Interface)  │     │  (Custom Renderer)    │     ║
+  ║    └──────────┬──────────┘     └───────────────────────┘     ║
+  ╚═══════════════╪══════════════════════════════════════════════╝
                   │  triggers simulation
   ╔═══════════════╪════════════════════════════════════════════╗
   ║               ▼      CONTROLLER  LAYER                     ║
-  ║    ┌──────────────────────────────────────┐               ║
-  ║    │        SchedulerController.java      │               ║
-  ║    │  manages queue · routes algo · report│               ║
-  ║    └──────────┬───────────────────────────┘               ║
+  ║    ┌──────────────────────────────────────┐                ║
+  ║    │        SchedulerController.java      │                ║
+  ║    │  manages queue · routes algo · report│                ║
+  ║    └──────────┬───────────────────────────┘                ║
   ╚═══════════════╪════════════════════════════════════════════╝
         ┌─────────┴──────────┐
         ▼                    ▼
@@ -94,7 +94,7 @@ The project follows a clean **Model-View-Controller (MVC)** architecture:
   ╚═══════════╝    ╚═══════════════════╤══════════════════════╝
                                        │  spawn + signal
                    ╔═══════════════════▼══════════════════════╗
-                   ║           UBUNTU LINUX KERNEL             ║
+                   ║           UBUNTU LINUX KERNEL            ║
                    ║   Real PIDs  ·  SIGSTOP  ·  SIGCONT      ║
                    ╚══════════════════════════════════════════╝
 ```
@@ -177,9 +177,9 @@ Every worker process transitions through these states, controlled by Linux signa
 
 ```
   Circular Queue (quantum = 2):
-       ┌────┐     ┌────┐     ┌────┐
+       ┌────┐      ┌────┐      ┌────┐
   ──▶  │ P1 │ ──▶ │ P2 │ ──▶ │ P3 │ ──▶ (back to P1 if not done)
-       └────┘     └────┘     └────┘
+       └────┘      └────┘      └────┘
         run 2      run 2      run 2
         cycles     cycles     cycles
 ```
@@ -427,7 +427,7 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
   ╔════════╦══════════════════════════════════════╦══════════════╗
   ║   P1   ║               IDLE                   ║      P2      ║
-  ║        ║          (7 cycles gap)               ║              ║
+  ║        ║          (7 cycles gap)              ║              ║
   ╚════════╩══════════════════════════════════════╩══════════════╝
   0        3                                      10             14
            ↑
