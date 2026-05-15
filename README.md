@@ -178,7 +178,7 @@ Every worker process transitions through these states, controlled by Linux signa
 ```
   Circular Queue (quantum = 2):
        ┌────┐      ┌────┐      ┌────┐
-  ──▶  │ P1 │ ──▶ │ P2 │ ──▶ │ P3 │ ──▶ (back to P1 if not done)
+  ──▶  │ P1 │ ──▶ │ P2 │ ──▶  │ P3 │ ──▶ (back to P1 if not done)
        └────┘      └────┘      └────┘
         run 2      run 2      run 2
         cycles     cycles     cycles
