@@ -17,6 +17,8 @@ public class SchedulerGUI extends JFrame {
     private final JTextField tfPriority = new JTextField("1", 5);
     private final JSpinner spQuantum = new JSpinner(new SpinnerNumberModel(2, 1, 10, 1));
 
+    private final JLabel lblQuantum = new JLabel("Quantum (Cycles):"); // reference for the quantum lable (hide or visible)
+
     private final DefaultTableModel mdlInput = new DefaultTableModel(
             new String[]{"PID", "Arrival (Cycle)", "Burst (Cycles)", "Priority"}, 0);
     private final JTable tblInput = new JTable(mdlInput);
@@ -40,6 +42,11 @@ public class SchedulerGUI extends JFrame {
 
         buildUI();
         wireEvents();
+
+         // Hide Quantum component setup by default on startup (since FCFS is selected first)
+        lblQuantum.setVisible(false);
+        spQuantum.setVisible(false);
+        
         setLocationRelativeTo(null);
     }
 
@@ -126,6 +133,21 @@ public class SchedulerGUI extends JFrame {
             pidCounter = 1;
             tfPID.setText("P1");
         });
+
+        // Event listener to monitor selection changes in your algorithm combo box
+        cbAlgo.addActionListener(e -> {
+            String selectedMode = (String) cbAlgo.getSelectedItem();
+            boolean isRR = "RR".equalsIgnoreCase(selectedMode);
+            
+            // Toggle visibility seamlessly based on your selection
+            lblQuantum.setVisible(isRR);
+            spQuantum.setVisible(isVisible() && isRR);
+            
+            // Forces Swing to recalculate layouts immediately
+            revalidate();
+            repaint();
+        });
+        
     }
 
     private void runSimulation() {
